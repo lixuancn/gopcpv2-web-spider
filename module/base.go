@@ -8,7 +8,7 @@ type Module interface {
 	Addr() string
 	//组件的评分
 	Score() uint64
-	SetScore(source uint64)
+	SetScore(uint64)
 	//获取评分的计算器
 	ScoreCalculator()CalculateScore
 	//获取组件被调用的次数
