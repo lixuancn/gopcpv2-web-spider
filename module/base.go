@@ -61,7 +61,7 @@ type Analyzer interface {
 	Analyze(resp *Response)([]Data, []error)
 }
 
-type ParseResponse func(httpResp *http.Response, respDepth uint32)([]Data, error)
+type ParseResponse func(httpResp *http.Response, respDepth uint32)([]Data, []error)
 
 
 //条目处理管道，并发安全

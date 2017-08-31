@@ -22,7 +22,7 @@ func NewRequest(httpRequest *http.Request, depth uint32)*Request{
 	return &Request{httpReq: httpRequest, depth: depth}
 }
 
-func (req *Request)HTTPRequest()*http.Request{
+func (req *Request)HTTPReq()*http.Request{
 	return req.httpReq
 }
 
@@ -43,7 +43,7 @@ func NewResponse(httpResp *http.Response, depth uint32)*Response{
 	return &Response{httpResp:httpResp, depth:depth}
 }
 
-func (resp *Response)HTTPResponse()*http.Response{
+func (resp *Response)HTTPResp()*http.Response{
 	return resp.httpResp
 }
 

@@ -8,7 +8,7 @@ import (
 
 type ErrorType string
 
-const ERROR_TYPE_DOWNLOAD ErrorType = "下载失败"
+const ERROR_TYPE_DOWNLOADER ErrorType = "下载失败"
 const ERROR_TYPE_ANALYZER ErrorType = "分析失败"
 const ERROR_TYPE_PIPLINE ErrorType = "条目处理管道失败"
 const ERROR_TYPE_SCHEDULER ErrorType = "调度器失败"
@@ -44,11 +44,10 @@ func (ce *myCrawlerError)Error()string{
 
 func (ce *myCrawlerError)genFullErrMsg(){
 	var buffer bytes.Buffer
-	buffer.WriteString("Crawler Error:")
+	buffer.WriteString("Crawler Error: ")
 	if ce.errType != ""{
-		buffer.WriteString("【")
-		buffer.WriteString(ce.errMsg)
-		buffer.WriteString("】: ")
+		buffer.WriteString(string(ce.errType))
+		buffer.WriteString(": ")
 	}
 	buffer.WriteString(ce.errMsg)
 	ce.fullErrMsg = buffer.String()
