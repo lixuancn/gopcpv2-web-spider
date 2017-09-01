@@ -10,7 +10,7 @@ type ErrorType string
 
 const ERROR_TYPE_DOWNLOADER ErrorType = "下载失败"
 const ERROR_TYPE_ANALYZER ErrorType = "分析失败"
-const ERROR_TYPE_PIPLINE ErrorType = "条目处理管道失败"
+const ERROR_TYPE_PIPELINE ErrorType = "条目处理管道失败"
 const ERROR_TYPE_SCHEDULER ErrorType = "调度器失败"
 
 type CrawlerError interface{

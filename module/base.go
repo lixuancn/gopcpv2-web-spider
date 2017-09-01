@@ -70,10 +70,11 @@ type Pipeline interface {
 	//返回当前条目处理管道使用的条目处理函数的列表
 	ItemProcessors() []ProcessItem
 	//发送条目，条目被发送后会依次经过若干的条目处理函数的处理
-	Send()
+	Send(item Item)[]error
 	//当前条目处理管道是否是快速失败的，快速失败是只要在某条目被处理的某一个步骤上出错，则该条目后续处理都会忽略
 	FailFast()bool
 	SetFailFast(failFast bool)
 }
+
 //接收需要处理的条目，返回处理后的结果
 type ProcessItem func(item Item)(Item, error)
