@@ -2,10 +2,6 @@ package module
 
 import "testing"
 
-
-000
-import "testing"
-
 func TestCalculateScoreSimple(t *testing.T) {
 	counts := Counts{
 		CalledCount:    100000,

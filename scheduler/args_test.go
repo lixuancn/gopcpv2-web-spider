@@ -1,23 +1,19 @@
 package scheduler
 
-import "testing"
-
-
-000
 import (
-	"errors"
-	"fmt"
-	"net/http"
-	"net/url"
-	"strings"
 	"testing"
-	"time"
-
+	"fmt"
 	"github.com/PuerkitoBio/goquery"
+	"strings"
+	"net/url"
 	"gopcpv2-web-spider/module"
-	"gopcp.v2/chapter6/webcrawler/module/local/analyzer"
-	"gopcp.v2/chapter6/webcrawler/module/local/downloader"
-	"gopcp.v2/chapter6/webcrawler/module/local/pipeline"
+	"net/http"
+	"gopcpv2-web-spider/module/local/downloader"
+	"gopcpv2-web-spider/module/local/analyzer"
+	"gopcpv2-web-spider/module/local/pipeline"
+	"log"
+	"errors"
+	"time"
 )
 
 func TestArgsRequest(t *testing.T) {
@@ -113,7 +109,7 @@ func genRequestArgs(acceptedDomains []string, maxDepth uint32) RequestArgs {
 
 // genDataArgs 用于生成数据参数的实例。
 func genDataArgs(
-bufferCap uint32, maxBufferNumber uint32, stepLen uint32) DataArgs {
+	bufferCap uint32, maxBufferNumber uint32, stepLen uint32) DataArgs {
 	values := [8]uint32{}
 	var bufferCapStep uint32
 	var maxBufferNumberStep uint32
@@ -175,10 +171,10 @@ func TestArgsModule(t *testing.T) {
 
 // genSimpleModuleArgs 用于生成只包含简易组件实例的参数实例。
 func genSimpleModuleArgs(
-downloaderNumber int8,
-analyzerNumber int8,
-pipelineNumber int8,
-t *testing.T) ModuleArgs {
+	downloaderNumber int8,
+	analyzerNumber int8,
+	pipelineNumber int8,
+	t *testing.T) ModuleArgs {
 	snGen := module.NewSNGenertor(1, 0)
 	return ModuleArgs{
 		Downloaders: genSimpleDownloaders(downloaderNumber, false, snGen, t),
@@ -316,7 +312,7 @@ func parseATag(httpResp *http.Response, respDepth uint32) ([]module.Data, []erro
 		if href != "" && !strings.HasPrefix(lowerHref, "javascript") {
 			aURL, err := url.Parse(href)
 			if err != nil {
-				logger.Warnf("An error occurs when parsing attribute %q in tag %q : %s (href: %s)",
+				log.Printf("An error occurs when parsing attribute %q in tag %q : %s (href: %s)",
 					err, "href", "a", href)
 				return
 			}
@@ -347,7 +343,7 @@ func parseATag(httpResp *http.Response, respDepth uint32) ([]module.Data, []erro
 		m["a.index"] = index
 		item := module.Item(m)
 		dataList = append(dataList, item)
-		logger.Infof("Processed item: %v", m)
+		log.Printf("Processed item: %v", m)
 	})
 	return dataList, errs
 }

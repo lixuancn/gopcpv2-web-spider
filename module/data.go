@@ -4,12 +4,12 @@ import "net/http"
 
 type Data interface{
 	//判断数据是否有效
-	Vaild() bool
+	Valid() bool
 }
 
 type Item map[string]interface{}
 
-func (item Item)Vaild()bool{
+func (item Item)Valid()bool{
 	return item != nil
 }
 
@@ -30,7 +30,7 @@ func (req *Request)Depth()uint32{
 	return req.depth
 }
 
-func (req *Request)Vaild()bool{
+func (req *Request)Valid()bool{
 	return req.httpReq != nil && req.httpReq.URL != nil
 }
 
@@ -51,6 +51,6 @@ func (resp *Response)Depth()uint32{
 	return resp.depth
 }
 
-func (resp *Response)Vaild()bool{
+func (resp *Response)Valid()bool{
 	return resp.httpResp != nil && resp.httpResp.Body != nil
 }

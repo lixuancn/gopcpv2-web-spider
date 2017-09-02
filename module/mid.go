@@ -97,7 +97,7 @@ func SplitMID(mid MID) ([]string, error) {
 
 //用于判断序列号的合法性
 func legalSN(sn string)bool{
-	_, err := strconv.ParseUint(sn, 10, 6)
+	_, err := strconv.ParseUint(sn, 10, 64)
 	if err != nil{
 		return false
 	}

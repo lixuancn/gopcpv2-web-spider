@@ -5,13 +5,6 @@ import (
 	"sync"
 )
 
-
-000
-import (
-	"testing"
-	"sync"
-)
-
 func TestCheckStatus(t *testing.T) {
 	var currentStatus, wantedStatus Status
 	var currentStatusList, wantedStatusList []Status

@@ -3,9 +3,12 @@ package module
 //组件的类型
 type Type string
 
-const TYPE_DOWNLOADER Type = "下载器"
-const TYPE_ANALYZER Type = "分析器"
-const TYPE_PIPELINE Type = "条目处理管道"
+// TYPE_DOWNLOADER 代表下载器。
+const TYPE_DOWNLOADER Type = "downloader"
+// TYPE_ANALYZER 代表分析器。
+const TYPE_ANALYZER Type = "analyzer"
+// TYPE_PIPELINE 代表条目处理管道。
+const TYPE_PIPELINE Type = "pipeline"
 
 var legalTypeLetterMap = map[Type]string{
 	TYPE_DOWNLOADER: "D",
